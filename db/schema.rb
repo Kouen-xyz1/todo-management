@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_04_08_234750) do
 
   create_table "task_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "status"
     t.string "todo"
     t.string "memo"

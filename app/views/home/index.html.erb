@@ -17,6 +17,23 @@
     </tr>
   </thead>
   <tbody>
-
+    <% @task_lists.each do |task| %>
+      <tr>
+        <th scope="row">
+            <%= task.id %>
+        </th>
+          <td><%= task.status %></td>
+          <td><%= task.todo %></td>
+          <td><%= task.memo %></td>
+          <td><%= task.priority %></td>
+          <td><%= task.context %></td>
+          <td><%= task.start %></td>
+          <td><%= task.end %></td>
+          <td><%= task.budget_h %></td>
+          <td><%= task.result_h %></td>
+          <td><%= task.budget_p %></td>
+          <td><%= task.result_p %></td>
+      </tr>
+    <% end %>
   </tbody>
     </table>    
