@@ -1,0 +1,15 @@
+ja:
+  enums:
+    task_list:
+      status:
+        waiting: 未着手
+        working: 着手
+        on_going: 作業中
+        pending: 保留
+        complete: 完了
+      context:
+        am: 午前
+        pm1: 午後1
+        pm2: 午後2
+        night: 夜
+        mid_night: 深夜

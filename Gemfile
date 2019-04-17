@@ -64,3 +64,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # devise
 source 'https://rubygems.org'
 gem 'devise'
+gem 'enum_help'
