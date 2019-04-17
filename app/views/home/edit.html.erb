@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with url: home_index_path do |form| %>
+  <%= form_with url: home_path(@task_list), model: @task_list do |form| %>
     <div class="form-group">
       <%= form.label :status %>
       <%= form.number_field :status, class: "form-control"%>

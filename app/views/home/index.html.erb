@@ -15,25 +15,31 @@
       <th scope="col">進捗見積</th>
       <th scope="col">進捗実績</th>
       <th scope="col">進捗率</th>
-    </tr>
+      <th scope="col"></th>
   </thead>
   <tbody>
     <% @task_lists.each do |task| %>
       <tr>
         <th scope="row">
+        <%= link_to edit_home_path(task.id) do %>
+          <%= task.id %>
+        <% end %>
         </th>
-          <td><%= task.status %></td>
-          <td><%= task.todo %></td>
-          <td><%= task.memo %></td>
-          <td><%= task.priority %></td>
-          <td><%= task.context %></td>
-          <td><%= task.start %></td>
-          <td><%= task.end %></td>
-          <td><%= task.budget_h %></td>
-          <td><%= task.result_h %></td>
-          <td><%= task.budget_p %></td>
-          <td><%= task.result_p %></td>
-          <td><%= task.progress %>%</td>
+        <td><%= task.status %></td>
+        <td><%= task.todo %></td>
+        <td><%= task.memo %></td>
+        <td><%= task.priority %></td>
+        <td><%= task.context %></td>
+        <td><%= task.start %></td>
+        <td><%= task.end %></td>
+        <td><%= task.budget_h %></td>
+        <td><%= task.result_h %></td>
+        <td><%= task.budget_p %></td>
+        <td><%= task.result_p %></td>
+        <td><%= task.progress %>%</td>
+        <td>
+          <%= link_to '削除', home_path(task), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

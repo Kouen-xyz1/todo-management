@@ -25,25 +25,25 @@ class HomeController < ApplicationController
   end
   
   def edit
-    @task_lists = TaskList.find_by(id: params[:id])
-    redirect_to :home_index_path and return unless @task_lists
+    @task_list = TaskList.find_by(id: params[:id])
+    redirect_to :home_index_path and return unless @task_list
   end
   
   def update
-    @task_lists = TaskList.find_by(id: params[:id])
-    redirect_to :home_index_path and return unless @task_lists
-    @task_lists.update(task_lists_params)
+    @task_list = TaskList.find_by(id: params[:id])
+    redirect_to :home_index_path and return unless @task_list
+    @task_list.update(task_list_params)
     redirect_to action: :index and return
   end
 
   def destroy
-    @task_lists = TaskList.find_by(id: params[:id])
-    redirect_to :home_index_path and return unless @task_lists
-    @task_lists.destroy
+    @task_list = TaskList.find_by(id: params[:id])
+    redirect_to :home_index_path and return unless @task_list
+    @task_list.destroy
     redirect_to action: :index and return
   end
   
-  def home_params
-    params.require(:task_lists).permit(:user_id, :status, :todo, :memo, :priority, :context, :start, :end, :budget_h, :result_h, :budget_p, :result_p)
+  def task_list_params
+    params.require(:task_list).permit(:user_id, :status, :todo, :memo, :priority, :context, :start, :end, :budget_h, :result_h, :budget_p, :result_p)
   end
 end
