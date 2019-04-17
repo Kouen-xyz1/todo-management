@@ -24,10 +24,26 @@ class HomeController < ApplicationController
     redirect_to action: :index and return
   end
   
+  def edit
+    @task_lists = TaskList.find_by(id: params[:id])
+    redirect_to :home_index_path and return unless @task_lists
+  end
+  
   def update
     @task_lists = TaskList.find_by(id: params[:id])
     redirect_to :home_index_path and return unless @task_lists
     @task_lists.update(task_lists_params)
     redirect_to action: :index and return
+  end
+
+  def destroy
+    @task_lists = TaskList.find_by(id: params[:id])
+    redirect_to :home_index_path and return unless @task_lists
+    @task_lists.destroy
+    redirect_to action: :index and return
+  end
+  
+  def home_params
+    params.require(:task_lists).permit(:user_id, :status, :todo, :memo, :priority, :context, :start, :end, :budget_h, :result_h, :budget_p, :result_p)
   end
 end
