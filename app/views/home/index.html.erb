@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table" style="width: 1500px">
   <%= link_to("ToDo登録", "/home/new") %>
   <thead>
     <tr>
@@ -22,19 +22,39 @@
       <tr>
         <%= form_with url: home_path(task_list), model: task_list do |form| %>
           <th scope="row"><%= task_list.id %></th>
-          <td><%= task_list.status_i18n %></td>
+          <td>
+            <%= form.select :status, TaskList.statuses_i18n.keys.map { |k| [TaskList.statuses_i18n[k], k]}, {}, class: "form-control" %>
+          </td>
           <td>
             <%= form.text_field :todo, class: "form-control todo-edit"%>
           </td>
-          <td><%= task_list.memo %></td>
-          <td><%= task_list.priority %></td>
-          <td><%= task_list.context_i18n %></td>
-          <td><%= task_list.start %></td>
-          <td><%= task_list.end %></td>
-          <td><%= task_list.budget_h %></td>
-          <td><%= task_list.result_h %></td>
-          <td><%= task_list.budget_p %></td>
-          <td><%= task_list.result_p %></td>
+          <td>
+            <%= form.text_field :memo, class: "form-control"%>
+          </td>
+          <td>
+            <%= form.text_field :priority, class: "form-control"%>
+          </td>
+          <td>
+            <%= form.select :context, TaskList.contexts_i18n.keys.map { |k| [TaskList.contexts_i18n[k], k]}, {}, class: "form-control" %>
+          </td>
+          <td>
+            <%= form.date_field :start, class: "form-control"%>
+          </td>
+          <td>
+            <%= form.date_field :end, class: "form-control"%>
+          </td>
+          <td>
+            <%= form.number_field :budget_h, class: "form-control"%>
+          </td>
+          <td>
+            <%= form.number_field :result_h, class: "form-control"%>
+          </td>
+          <td>
+            <%= form.number_field :budget_p, class: "form-control"%>
+          </td>
+          <td>
+            <%= form.number_field :result_p, class: "form-control"%>
+          </td>
           <td><%= task_list.progress %>%</td>
           <td>
             <%= form.submit "保存", :class => "btn btn-info todo-edit" %>
@@ -43,4 +63,4 @@
       </tr>
     <% end %>
   </tbody>
-    </table>    
+</table>    

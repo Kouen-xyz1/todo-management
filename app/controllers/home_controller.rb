@@ -31,9 +31,9 @@ class HomeController < ApplicationController
   
   def update
     @task_list = TaskList.find_by(id: params[:id])
-    redirect_to :home_index_path and return unless @task_list
+    return unless @task_list
     @task_list.update(task_list_params)
-    redirect_to action: :index and return
+    redirect_to action: :index
   end
 
   def destroy
