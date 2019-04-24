@@ -18,28 +18,26 @@
       <th scope="col"></th>
   </thead>
   <tbody>
-    <% @task_lists.each do |task| %>
+    <% @task_lists.each do |task_list| %>
       <tr>
-        <th scope="row">
-        <%= link_to edit_home_path(task.id) do %>
-          <%= task.id %>
+        <%= form_with url: home_path(task_list), model: task_list do |form| %>
+          <th scope="row"><%= task_list.id %></th>
+          <td><%= task_list.status_i18n %></td>
+          <td><%= form.text_field :todo, class: "form-control"%></td>
+          <td><%= task_list.memo %></td>
+          <td><%= task_list.priority %></td>
+          <td><%= task_list.context_i18n %></td>
+          <td><%= task_list.start %></td>
+          <td><%= task_list.end %></td>
+          <td><%= task_list.budget_h %></td>
+          <td><%= task_list.result_h %></td>
+          <td><%= task_list.budget_p %></td>
+          <td><%= task_list.result_p %></td>
+          <td><%= task_list.progress %>%</td>
+          <td>
+            <%= form.submit "保存", :class => "btn btn-info" %>
+          </td>
         <% end %>
-        </th>
-        <td><%= task.status_i18n %></td>
-        <td><%= task.todo %></td>
-        <td><%= task.memo %></td>
-        <td><%= task.priority %></td>
-        <td><%= task.context_i18n %></td>
-        <td><%= task.start %></td>
-        <td><%= task.end %></td>
-        <td><%= task.budget_h %></td>
-        <td><%= task.result_h %></td>
-        <td><%= task.budget_p %></td>
-        <td><%= task.result_p %></td>
-        <td><%= task.progress %>%</td>
-        <td>
-          <%= link_to '削除', home_path(task), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        </td>
       </tr>
     <% end %>
   </tbody>
