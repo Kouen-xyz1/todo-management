@@ -23,7 +23,10 @@
         <%= form_with url: home_path(task_list), model: task_list do |form| %>
           <th scope="row"><%= task_list.id %></th>
           <td><%= task_list.status_i18n %></td>
-          <td><%= form.text_field :todo, class: "form-control"%></td>
+          <td>
+            <%= form.text_field :todo, class: "form-control todo-edit"%>
+            <span class="todo-show"><%= task_list.todo %></span>
+          </td>
           <td><%= task_list.memo %></td>
           <td><%= task_list.priority %></td>
           <td><%= task_list.context_i18n %></td>
@@ -35,7 +38,8 @@
           <td><%= task_list.result_p %></td>
           <td><%= task_list.progress %>%</td>
           <td>
-            <%= form.submit "保存", :class => "btn btn-info" %>
+            <%= form.submit "保存", :class => "btn btn-info todo-edit" %>
+            <a href="" class="todo-show">編集</a>
           </td>
         <% end %>
       </tr>
