@@ -33,6 +33,7 @@ class HomeController < ApplicationController
     @task_list = TaskList.find_by(id: params[:id])
     return unless @task_list
     @task_list.update(task_list_params)
+    flash[:message] = '保存しました'
     redirect_to action: :index
   end
 
