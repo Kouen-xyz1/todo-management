@@ -20,7 +20,7 @@
   <tbody>
     <% @task_lists.each do |task_list| %>
       <tr>
-        <%= form_with url: home_path(task_list), model: task_list do |form| %>
+        <%= form_with url: home_path(task_list), model: task_list, id: "task-form" do |form| %>
           <th scope="row"><%= task_list.id %></th>
           <td>
             <%= form.select :status, TaskList.statuses_i18n.keys.map { |k| [TaskList.statuses_i18n[k], k]}, {}, class: "form-control" %>
@@ -56,9 +56,6 @@
             <%= form.number_field :result_p, class: "form-control"%>
           </td>
           <td><%= task_list.progress %>%</td>
-          <td>
-            <%= form.submit "保存", :class => "btn btn-info todo-edit" %>
-          </td>
         <% end %>
       </tr>
     <% end %>
