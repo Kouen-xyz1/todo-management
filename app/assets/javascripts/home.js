@@ -4,7 +4,7 @@ $(document).ready(function() {
   }, 1000);
   
   $(".form-control").change(function() {
-    $('#task-form').submit();
+    $(this).parent('div').parent('form').submit();
   });
   
   setToday()
