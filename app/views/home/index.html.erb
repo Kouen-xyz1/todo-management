@@ -1,46 +1,39 @@
-<table class="table">
+<div class="div">
   <%= link_to("ToDo登録", "/home/new") %>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">進捗状況</th>
-      <th scope="col">ToDo</th>
-      <th scope="col">備考</th>
-      <th scope="col">優先順位</th>
-      <th scope="col">コンテキスト</th>
-      <th scope="col">開始日</th>
-      <th scope="col">終了日</th>
-      <th scope="col">工数見積</th>
-      <th scope="col">工数実績</th>
-      <th scope="col">進捗見積</th>
-      <th scope="col">進捗実績</th>
-      <th scope="col">進捗率</th>
-      <th scope="col"></th>
-  </thead>
-  <tbody>
-    <% @task_lists.each do |task| %>
-      <tr>
-        <th scope="row">
-        <%= link_to edit_home_path(task.id) do %>
-          <%= task.id %>
-        <% end %>
-        </th>
-        <td><%= task.status_i18n %></td>
-        <td><%= task.todo %></td>
-        <td><%= task.memo %></td>
-        <td><%= task.priority %></td>
-        <td><%= task.context_i18n %></td>
-        <td><%= task.start %></td>
-        <td><%= task.end %></td>
-        <td><%= task.budget_h %></td>
-        <td><%= task.result_h %></td>
-        <td><%= task.budget_p %></td>
-        <td><%= task.result_p %></td>
-        <td><%= task.progress %>%</td>
-        <td>
-          <%= link_to '削除', home_path(task), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-    </table>    
+  <div>
+    <div class="task-row">
+      <div class="task-col">進捗状況</div>
+      <div class="task-col2">ToDo</div>
+      <div class="task-col2">備考</div>
+      <div class="task-col">優先順位</div>
+      <div class="task-col2">コンテキスト</div>
+      <div class="task-col2">開始日</div>
+      <div class="task-col2">終了日</div>
+      <div class="task-col">工数見積</div>
+      <div class="task-col">工数実績</div>
+      <div class="task-col">進捗見積</div>
+      <div class="task-col">進捗実績</div>
+      <div class="task-col"></div>
+  </div>
+  <div class="cb"></div>
+  <hr style="padding: 0; margin: 0">
+  <% @task_lists.each do |task| %>
+    <div class="task-row">
+      <div class="task-col"><%= task.status_i18n %></div>
+      <div class="task-col2"><%= task.todo %></div>
+      <div class="task-col2"><%= task.memo %></div>
+      <div class="task-col"><%= task.priority %></div>
+      <div class="task-col2"><%= task.context_i18n %></div>
+      <div class="task-col2"><%= task.start %></div>
+      <div class="task-col2"><%= task.end %></div>
+      <div class="task-col"><%= task.budget_h %></div>
+      <div class="task-col"><%= task.result_h %></div>
+      <div class="task-col"><%= task.budget_p %></div>
+      <div class="task-col"><%= task.result_p %></div>
+      <div>
+        <%= link_to '削除', home_path(task), medivod: :delete, data: { confirm: '本当に削除しますか？' } %>
+      </div>
+    </div>
+    <div class="cb"></div>
+  <% end %>
+</div>    
