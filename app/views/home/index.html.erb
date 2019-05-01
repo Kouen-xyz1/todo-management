@@ -17,23 +17,48 @@
   </div>
   <div class="cb"></div>
   <hr style="padding: 0; margin: 0">
-  <% @task_lists.each do |task| %>
+  <% @task_lists.each do |task_list| %>
     <div class="task-row">
-      <div class="task-col"><%= task.status_i18n %></div>
-      <div class="task-col2"><%= task.todo %></div>
-      <div class="task-col2"><%= task.memo %></div>
-      <div class="task-col"><%= task.priority %></div>
-      <div class="task-col2"><%= task.context_i18n %></div>
-      <div class="task-col2"><%= task.start %></div>
-      <div class="task-col2"><%= task.end %></div>
-      <div class="task-col"><%= task.budget_h %></div>
-      <div class="task-col"><%= task.result_h %></div>
-      <div class="task-col"><%= task.budget_p %></div>
-      <div class="task-col"><%= task.result_p %></div>
-      <div>
-        <%= link_to '削除', home_path(task), medivod: :delete, data: { confirm: '本当に削除しますか？' } %>
-      </div>
+      <%= form_with url: home_path(task_list), model: task_list, id: "task-form" do |form| %>
+        <div class="task-col">
+          <%= form.select :status, TaskList.statuses_i18n.keys.map { |k| [TaskList.statuses_i18n[k], k]}, {}, class: "form-control" %>
+        </div>
+        <div class="task-col2">
+          <%= form.text_field :todo, class: "form-control" %>
+        </div>
+        <div class="task-col2">
+          <%= form.text_field :memo, class: "form-control" %>
+        </div>
+        <div class="task-col">
+          <%= form.text_field :priority, class: "form-control" %>
+        </div>
+        <div class="task-col2">
+          <%= form.select :context, TaskList.contexts_i18n.keys.map { |k| [TaskList.contexts_i18n[k], k]}, {}, class: "form-control" %>
+        </div>
+        <div class="task-col2">
+          <%= form.date_field :start, class: "form-control"%>
+        </div>
+        <div class="task-col2">
+          <%= form.date_field :end, class: "form-control"%>
+        </div>
+        <div class="task-col">
+          <%= form.number_field :budget_h, class: "form-control"%>
+        </div>
+        <div class="task-col">
+          <%= form.number_field :result_h, class: "form-control"%>
+        </div>
+        <div class="task-col">
+          <%= form.number_field :budget_p, class: "form-control"%> 
+        </div>
+        <div class="task-col">
+          <%= form.number_field :result_p, class: "form-control"%>
+        </div>
+        <div>
+          <%= link_to '削除', home_path(task_list), medivod: :delete, data: { confirm: '本当に削除しますか？' } %>
+        </div>
+      <% end %>
     </div>
     <div class="cb"></div>
+    
   <% end %>
 </div>    
