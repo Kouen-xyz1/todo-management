@@ -54,7 +54,7 @@
           <%= form.number_field :result_p, class: "form-control"%>
         </div>
         <div>
-          <%= link_to '削除', home_path(task_list), medivod: :delete, data: { confirm: '本当に削除しますか？' } %>
+          <%= link_to '削除', home_path(task_list), method: :delete, data: { confirm: '本当に削除しますか？' } %>
         </div>
       <% end %>
     </div>

@@ -39,10 +39,10 @@ class HomeController < ApplicationController
 
   def destroy
     @task_list = TaskList.find_by(id: params[:id])
-    return unless @task_list
-    @task_list.destroy(task_list_params)
+    redirect_to :home_index_path and return unless @task_list
+    @task_list.destroy
     flash[:message] = '削除しました'
-    redirect_to action: :index
+    redirect_to action: :index and return
   end
   
   def task_list_params
